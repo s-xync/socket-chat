@@ -10,12 +10,14 @@ const feedback = document.getElementById("feedback");
 btn.addEventListener("click", () => {
   socket.emit("chat", {
     message: message.value,
-    handle: handle.value
+    handle: handle.value === "" ? "Someone" : handle.value
   });
+  message.value = "";
+  handle.value = "";
 });
 
 message.addEventListener("keypress", () => {
-  socket.emit("typing", handle.value);
+  socket.emit("typing", handle.value === "" ? "Someone" : handle.value);
 });
 
 // listen events

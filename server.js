@@ -22,6 +22,11 @@ var io = socket(server);
 io.on("connection", socket => {
   console.log("made socket connection", socket.id);
   socket.on("chat", data => {
+    // to everyone
     io.sockets.emit("chat", data);
+  });
+  socket.on("typing", data => {
+    // to everyone except for self
+    socket.broadcast.emit("typing", data);
   });
 });

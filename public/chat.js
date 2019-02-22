@@ -13,7 +13,6 @@ btn.addEventListener("click", () => {
     handle: handle.value === "" ? "Someone" : handle.value
   });
   message.value = "";
-  handle.value = "";
 });
 
 message.addEventListener("keypress", () => {
